@@ -15,6 +15,7 @@ pipeline {
             reference: '',
             trackingSubmodules: true
           ],
+					[$class: 'PerBuildTag']
           ],
           submoduleCfg: [],
           userRemoteConfigs: []
