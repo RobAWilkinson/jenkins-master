@@ -4,6 +4,7 @@ pipeline {
     stage('Checkout') {
       steps {
         checkout([
+					poll: false,
           $class: 'GitSCM',
           branches: [[name: '*/master']],
           doGenerateSubmoduleConfigurations: false,
@@ -15,7 +16,6 @@ pipeline {
             reference: '',
             trackingSubmodules: true
           ],
-					[$class: 'PerBuildTag']
           ],
           submoduleCfg: [],
           userRemoteConfigs: []
