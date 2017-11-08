@@ -4,7 +4,7 @@ pipeline {
     stage('Checkout') {
       steps {
         checkout([
-					poll: false,
+          poll: false,
           $class: 'GitSCM',
           branches: [[name: '*/master']],
           doGenerateSubmoduleConfigurations: false,
@@ -22,5 +22,12 @@ pipeline {
         ])
       }
     }
-	}
+    stage("Echo") {
+      steps {
+        echo "test"
+        sh "ls"
+      }
+
+    }
+  }
 }
