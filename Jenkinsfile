@@ -3,31 +3,15 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        checkout([
-          poll: false,
-          $class: 'GitSCM',
-          branches: [[name: '*/master']],
-          doGenerateSubmoduleConfigurations: false,
-          extensions: [[
-            $class: 'SubmoduleOption',
-            disableSubmodules: false,
-            parentCredentials: true,
-            recursiveSubmodules: true,
-            reference: '',
-            trackingSubmodules: true
-          ],
-          ],
-          submoduleCfg: [],
-          userRemoteConfigs: []
-        ])
+				checkout scm
       }
     }
     stage("Echo") {
       steps {
         echo "test"
-        sh "ls"
+        sh "ls nest"
+        sh "ls nest/double-nested"
       }
-
     }
   }
 }
